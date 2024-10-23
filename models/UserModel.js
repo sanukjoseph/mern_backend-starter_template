@@ -16,6 +16,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ['user', 'admin'], // Roles can be 'user' or 'admin'
+    default: 'user',
+  },
+  profilePicture: {
+    type: String, // Store the path to the profile picture
+    default: '',
+  },
 });
 
 // Password hashing middleware

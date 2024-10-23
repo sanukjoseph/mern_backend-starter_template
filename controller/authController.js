@@ -4,7 +4,7 @@ import { generateToken } from '../utils/jwtHelper.js';
 
 // Register a new user
 export const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   try {
     let user = await UserModel.findOne({ email });
@@ -12,7 +12,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    user = new UserModel({ name, email, password });
+    user = new UserModel({ name, email, password, role }); // Assign role
     await user.save();
 
     const token = generateToken(user);
