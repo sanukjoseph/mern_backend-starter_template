@@ -1,7 +1,8 @@
 // src/pages/Register.jsx
-import { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const Register = () => {
   const { register } = useAuth();
@@ -14,9 +15,11 @@ const Register = () => {
     e.preventDefault();
     try {
       await register(name, email, password);
-      navigate('/dashboard');
+      toast.success('Registration successful! Please log in.');
+      navigate('/login');
     } catch (error) {
-      console.error('Registration failed:', error);
+      toast.error('Registration failed. Try again.');
+      console.error(error);
     }
   };
 

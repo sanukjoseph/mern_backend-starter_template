@@ -1,5 +1,7 @@
-import  { createContext, useState, useEffect } from 'react';
+// src/context/AuthContext.jsx
+import { createContext, useState, useEffect } from 'react';
 import axios from '../utils/axiosConfig';
+import toast from 'react-hot-toast';
 
 export const AuthContext = createContext();
 
@@ -38,6 +40,7 @@ export const AuthProvider = ({ children }) => {
     await axios.post('/users/logout');
     setUser(null);
     localStorage.removeItem('token');
+    toast.success('Logged out successfully.');
   };
 
   return (

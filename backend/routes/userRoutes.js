@@ -1,9 +1,10 @@
 // routes/userRoutes.js
 import express from 'express';
-import { updateProfile, getProfile } from '../controllers/userController.js';
+import { updateProfile, getProfile } from '../controller/userController.js';
 import { authMiddleware } from '../middlewares/jwtMiddleware.js';
 import { roleMiddleware } from '../middlewares/roleMiddleware.js';
 import multer from 'multer';
+import path from 'path';
 
 // Setup Multer for file uploads
 const storage = multer.diskStorage({
